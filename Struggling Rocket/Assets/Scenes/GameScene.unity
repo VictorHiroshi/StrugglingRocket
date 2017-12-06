@@ -134,7 +134,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4699235699964794, guid: 46ab8d263d2bd484b9c15fb788a540bf, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4699235699964794, guid: 46ab8d263d2bd484b9c15fb788a540bf, type: 2}
       propertyPath: m_LocalRotation.x
@@ -156,10 +156,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114443133665196986, guid: 46ab8d263d2bd484b9c15fb788a540bf,
+    - target: {fileID: 212652122570108786, guid: 46ab8d263d2bd484b9c15fb788a540bf,
         type: 2}
-      propertyPath: forwardSpeed
-      value: 2
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 46ab8d263d2bd484b9c15fb788a540bf, type: 2}
@@ -177,6 +177,9 @@ GameObject:
   - component: {fileID: 1976716582}
   - component: {fileID: 1976716586}
   - component: {fileID: 1976716587}
+  - component: {fileID: 1976716588}
+  - component: {fileID: 1976716589}
+  - component: {fileID: 1976716590}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -270,8 +273,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f58b10f3ebdeb94295a88dce4306044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetModel: {fileID: 1027289922339042, guid: ebc1c49bbae592d4b81529aa72551559,
-    type: 2}
+  planetModel:
+  - {fileID: 1700761625649014, guid: 3d2ee9240f9962a49a5bcf6b99f2fa04, type: 2}
+  - {fileID: 1826328192599546, guid: b15bb239c95647c4590dd8ffd42f2bc9, type: 2}
+  - {fileID: 1403244300779656, guid: 4eec0f0f72d11404ab26ce9610872e88, type: 2}
+  - {fileID: 1257955536955452, guid: 55732fe5059d4604e91e3112e49e104c, type: 2}
+  - {fileID: 1540002919569150, guid: 75713df56f5f5eb4686847986b9d25bf, type: 2}
+  - {fileID: 1212867786757496, guid: 6847cd25a6accb547ba6651bab6dae76, type: 2}
+  - {fileID: 1099433950075778, guid: 11618265d1ba99c489dfda41c32f4006, type: 2}
+  - {fileID: 1031284321648120, guid: 770db8b72b846b5439f4e15329bcf913, type: 2}
+  extraPlanetForcePerWave: 0.2
   spawnRangeXAxis: 10
   spawnDistanceFromCamera: 15
   delayBetweenPlanetSpawning: 1
+  delayBetwennSpawningWaves: 5
+  SpawnWaveSize: 10
+  minPlanetDist: 8
+--- !u!68 &1976716588
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1976716581}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -25, y: -10}
+  - {x: 25, y: -10}
+--- !u!114 &1976716589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1976716581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d9d176e29fabb499747e9968bce263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1976716590
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1976716581}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

@@ -16,7 +16,7 @@ public class RocketController : MonoBehaviour {
 
 		speed = new Vector2 (0f, forwardSpeed);
 
-		mRigidBody.velocity = speed;
+		//mRigidBody.velocity = speed;
 	}
 
 	void Update()
