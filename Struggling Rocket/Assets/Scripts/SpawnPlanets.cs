@@ -14,14 +14,11 @@ public class SpawnPlanets : MonoBehaviour {
 	public float delayBetweenPlanetSpawning = 2f;
 	public float delayBetwennSpawningWaves = 5f;
 	public int SpawnWaveSize = 10;
-	[Space]
-	public float minPlanetDist = 10f;
 
 	private Vector2 position;
-	private Vector2 lastPlanetPosition;
 	private WaitForSeconds delayTime;
 	private WaitForSeconds waveDelay;
-	private GameObject instace;
+	private GameObject instance;
 
 	void Start()
 	{
@@ -29,8 +26,6 @@ public class SpawnPlanets : MonoBehaviour {
 		waveDelay = new WaitForSeconds (delayBetwennSpawningWaves);
 
 		StartCoroutine (Spawn (SpawnWaveSize));
-
-		lastPlanetPosition = Vector2.zero;
 	}
 
 	private IEnumerator Spawn(int numPlanets)
@@ -40,21 +35,18 @@ public class SpawnPlanets : MonoBehaviour {
 			position.x = transform.position.x + Random.Range (-spawnRangeXAxis, spawnRangeXAxis);
 			position.y = transform.position.y + spawnDistanceFromCamera;
 
-			if((position-lastPlanetPosition).magnitude < minPlanetDist)
+			instance = planetModel [Random.Range (0, planetModel.Length)];
+
+			instance = Instantiate (instance, position, Quaternion.identity);
+
+			float scale = Random.Range (0.8f, 3f);
+
+			instance.transform.localScale = new Vector3 (scale, scale, -1f);
+
+
+			if(CollideWithOderPlanet (instance))
 			{
 				i--;
-			}
-			else
-			{
-				instace = planetModel [Random.Range (0, planetModel.Length)];
-
-				instace = Instantiate (instace, position, Quaternion.identity);
-
-				float scale = Random.Range (0.8f, 3f);
-
-				instace.transform.localScale = new Vector3 (scale, scale, -1f);
-
-				lastPlanetPosition = position;
 			}
 
 			yield return delayTime;
@@ -66,5 +58,11 @@ public class SpawnPlanets : MonoBehaviour {
 		yield return waveDelay;
 
 		StartCoroutine (Spawn (SpawnWaveSize));
+	}
+
+	private bool CollideWithOderPlanet(GameObject instance)
+	{
+		// TODO: Check if collides with other planets. If yes, delete instance.
+		return false;
 	}
 }

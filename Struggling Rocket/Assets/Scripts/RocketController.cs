@@ -19,10 +19,31 @@ public class RocketController : MonoBehaviour {
 		//mRigidBody.velocity = speed;
 	}
 
+	void Start()
+	{
+		MovingEvents.moveLeft.AddListener (MoveLeft);
+		MovingEvents.moveRight.AddListener (MoveRight);
+	}
+
 	void Update()
 	{
 		mRigidBody.MoveRotation (-1f * rotationSpeed * Input.GetAxis ("Horizontal"));
 
 		mRigidBody.AddForce (transform.up * forwardSpeed);
+	}
+
+	public void MoveLeft()
+	{
+		// TODO: Correctly move the player to the left.
+
+		Debug.Log ("MoveLeft");
+
+	}
+
+	public void MoveRight()
+	{
+		// TODO: Correctly move the player to the left.
+
+		Debug.Log ("MoveRight");
 	}
 }
