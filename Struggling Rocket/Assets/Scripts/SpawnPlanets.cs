@@ -19,19 +19,31 @@ public class SpawnPlanets : MonoBehaviour {
 	private WaitForSeconds delayTime;
 	private WaitForSeconds waveDelay;
 	private GameObject instance;
+	private static bool gameOver;
 
 	void Start()
 	{
 		delayTime = new WaitForSeconds (delayBetweenPlanetSpawning);
 		waveDelay = new WaitForSeconds (delayBetwennSpawningWaves);
+		gameOver = false;
 
 		StartCoroutine (Spawn (SpawnWaveSize));
+	}
+
+	public static void GameOver()
+	{
+		gameOver = true;
+		Debug.Log ("Stop Spawning Planets");
 	}
 
 	private IEnumerator Spawn(int numPlanets)
 	{
 		for(int i=0; i<numPlanets; i++)
 		{
+			if(gameOver)
+			{
+				break;
+			}
 			position.x = transform.position.x + Random.Range (-spawnRangeXAxis, spawnRangeXAxis);
 			position.y = transform.position.y + spawnDistanceFromCamera;
 
@@ -57,7 +69,10 @@ public class SpawnPlanets : MonoBehaviour {
 
 		yield return waveDelay;
 
-		StartCoroutine (Spawn (SpawnWaveSize));
+		if (!gameOver)
+		{
+			StartCoroutine (Spawn (SpawnWaveSize));
+		}
 	}
 
 	private bool CollideWithOderPlanet(GameObject instance)

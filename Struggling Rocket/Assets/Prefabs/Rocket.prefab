@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1315121160382808}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,6 +91,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 3
   rotationSpeed: 30
+  explodingSprites:
+  - {fileID: 21300008, guid: 05918f32e7982ce48aa76b1496b4e734, type: 3}
+  - {fileID: 21300016, guid: 05918f32e7982ce48aa76b1496b4e734, type: 3}
+  canBeMoved: 0
 --- !u!212 &212652122570108786
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -124,7 +128,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 05918f32e7982ce48aa76b1496b4e734, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -6,6 +6,9 @@ public class RocketController : MonoBehaviour {
 
 	public float forwardSpeed = 1f;
 	public float rotationSpeed = 30f;
+	public Sprite[] explodingSprites;
+
+	[HideInInspector]public bool canBeMoved;
 
 	private Rigidbody2D mRigidBody;
 	private Vector2 speed;
@@ -32,12 +35,19 @@ public class RocketController : MonoBehaviour {
 		mRigidBody.AddForce (transform.up * forwardSpeed);
 	}
 
+	void OnCollisionEnter2D (Collision2D col)
+	{
+		if(col.gameObject.tag == "Planet")
+		{
+			GameOver ();
+		}
+	}
+
 	public void MoveLeft()
 	{
 		// TODO: Correctly move the player to the left.
 
 		Debug.Log ("MoveLeft");
-
 	}
 
 	public void MoveRight()
@@ -45,5 +55,32 @@ public class RocketController : MonoBehaviour {
 		// TODO: Correctly move the player to the left.
 
 		Debug.Log ("MoveRight");
+	}
+
+	private void GameOver()
+	{
+		mRigidBody.simulated = false;
+		StartCoroutine (Explode ());
+
+		SpawnPlanets.GameOver ();
+	}
+
+	private IEnumerator Explode()
+	{
+		SpriteRenderer sprite = GetComponent <SpriteRenderer> ();
+		WaitForSeconds delay = new WaitForSeconds (0.2f);
+
+		if(sprite != null)
+		{
+			yield return delay;
+
+			for(int i=0; i< explodingSprites.Length; i++)
+			{
+				sprite.sprite = explodingSprites [i];
+				yield return delay;
+			}
+
+			sprite.enabled = false;
+		}
 	}
 }
