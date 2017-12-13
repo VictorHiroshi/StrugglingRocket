@@ -6,6 +6,7 @@ using UnityEngine.SocialPlatforms;
 public class SpawnPlanets : MonoBehaviour {
 
 	public GameObject[] planetModel;
+	public GameObject attractionParticles;
 	public float extraPlanetForcePerWave = 0.2f;
 	[Space]
 	public float spawnRangeXAxis = 10f;
@@ -55,8 +56,11 @@ public class SpawnPlanets : MonoBehaviour {
 
 			float scale = Random.Range (0.8f, 3f);
 
-			instance.transform.localScale = new Vector3 (scale, scale, -1f);
+			instance.transform.localScale = new Vector3 (scale, scale, 1f);
 
+			GameObject particles = Instantiate (attractionParticles, instance.transform);
+
+			particles.transform.localScale = new Vector3 (scale, 1, scale);
 
 			if(CollideWithOderPlanet (instance))
 			{

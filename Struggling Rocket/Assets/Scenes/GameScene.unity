@@ -137,7 +137,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 447319680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 675.5725, z: 0}
+  m_LocalPosition: {x: 0, y: 675, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 696374796}
@@ -285,8 +285,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -25, y: -10}
-  - {x: 25, y: -10}
+  - {x: -25, y: -12}
+  - {x: 25, y: -12}
 --- !u!114 &562966928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,13 +318,15 @@ MonoBehaviour:
   - {fileID: 1212867786757496, guid: 6847cd25a6accb547ba6651bab6dae76, type: 2}
   - {fileID: 1099433950075778, guid: 11618265d1ba99c489dfda41c32f4006, type: 2}
   - {fileID: 1031284321648120, guid: 770db8b72b846b5439f4e15329bcf913, type: 2}
+  attractionParticles: {fileID: 1812701035113192, guid: f0e02bf50adf82247854f9f9fef0d1c2,
+    type: 2}
   extraPlanetForcePerWave: 0.15
   spawnRangeXAxis: 10
   spawnDistanceFromCamera: 15
   delayBetweenPlanetSpawning: 1
   delayBetwennSpawningWaves: 5
   SpawnWaveSize: 10
-  distanceBetweenPlanets: 5
+  distanceBetweenPlanets: 6
 --- !u!114 &562966930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,8 +433,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 696374792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 196.5, y: 295, z: 0}
-  m_LocalScale: {x: 0.43666667, y: 0.43666667, z: 0.43666667}
+  m_LocalPosition: {x: 199, y: 298.5, z: 0}
+  m_LocalScale: {x: 0.44222224, y: 0.44222224, z: 0.44222224}
   m_Children:
   - {fileID: 447319681}
   - {fileID: 1817031416}
@@ -538,7 +540,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1349834847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 446, y: -635.5725, z: 0}
+  m_LocalPosition: {x: 445.99997, y: -635, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 696374796}
@@ -703,7 +705,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1817031415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -446, y: -635.5725, z: 0}
+  m_LocalPosition: {x: -445.99997, y: -635, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 696374796}
