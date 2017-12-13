@@ -14,6 +14,8 @@ public class SpawnPlanets : MonoBehaviour {
 	public float delayBetweenPlanetSpawning = 2f;
 	public float delayBetwennSpawningWaves = 5f;
 	public int SpawnWaveSize = 10;
+	[Space]
+	public float distanceBetweenPlanets = 5f;
 
 	private Vector2 position;
 	private WaitForSeconds delayTime;
@@ -78,6 +80,20 @@ public class SpawnPlanets : MonoBehaviour {
 	private bool CollideWithOderPlanet(GameObject instance)
 	{
 		// TODO: Check if collides with other planets. If yes, delete instance.
+		GameObject[] planets = GameObject.FindGameObjectsWithTag ("Planet");
+
+		foreach(GameObject planet in planets)
+		{
+			if (planet == instance)
+				continue;
+			
+			if((planet.transform.position-instance.transform.position).magnitude < distanceBetweenPlanets)
+			{
+				Destroy (instance);
+				return true;
+			}
+		}
+
 		return false;
 	}
 }

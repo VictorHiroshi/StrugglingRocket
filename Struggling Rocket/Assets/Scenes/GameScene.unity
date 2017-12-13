@@ -318,12 +318,13 @@ MonoBehaviour:
   - {fileID: 1212867786757496, guid: 6847cd25a6accb547ba6651bab6dae76, type: 2}
   - {fileID: 1099433950075778, guid: 11618265d1ba99c489dfda41c32f4006, type: 2}
   - {fileID: 1031284321648120, guid: 770db8b72b846b5439f4e15329bcf913, type: 2}
-  extraPlanetForcePerWave: 0.2
+  extraPlanetForcePerWave: 0.15
   spawnRangeXAxis: 10
   spawnDistanceFromCamera: 15
   delayBetweenPlanetSpawning: 1
   delayBetwennSpawningWaves: 5
   SpawnWaveSize: 10
+  distanceBetweenPlanets: 5
 --- !u!114 &562966930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,7 +538,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1349834847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 448, y: -655.5725, z: 0}
+  m_LocalPosition: {x: 446, y: -635.5725, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 696374796}
@@ -545,8 +546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.25}
-  m_AnchoredPosition: {x: -2, y: 20}
-  m_SizeDelta: {x: -742, y: -80}
+  m_AnchoredPosition: {x: -4, y: 40}
+  m_SizeDelta: {x: -744, y: -110}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1349834849
 MonoBehaviour:
@@ -702,7 +703,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1817031415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -448, y: -655.5725, z: 0}
+  m_LocalPosition: {x: -446, y: -635.5725, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 696374796}
@@ -710,8 +711,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.25}
-  m_AnchoredPosition: {x: 2, y: 20}
-  m_SizeDelta: {x: -742, y: -80}
+  m_AnchoredPosition: {x: 4, y: 40}
+  m_SizeDelta: {x: -744, y: -110}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1817031417
 MonoBehaviour:

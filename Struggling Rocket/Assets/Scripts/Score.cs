@@ -20,6 +20,6 @@ public class Score : MonoBehaviour {
 		if (player.position.y > distance)
 			distance = player.position.y;
 
-		scoreText.text = "Distance: " + distance.ToString ("F2") + "km";
+		scoreText.text = "Distance: " + distance.ToString ("F2");
 	}
 }
