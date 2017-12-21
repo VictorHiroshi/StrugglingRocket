@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RocketController : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class RocketController : MonoBehaviour {
 	public float rotationSpeed = 30f;
 	public Sprite[] explodingSprites;
 	public ParticleSystem particles;
+	public Canvas gameOverCanvas;
 
 	[HideInInspector]public bool canBeMoved;
 
@@ -20,7 +22,7 @@ public class RocketController : MonoBehaviour {
 
 		speed = new Vector2 (0f, forwardSpeed);
 
-		//mRigidBody.velocity = speed;
+		gameOverCanvas.enabled = false;
 	}
 
 	void Start()
@@ -58,6 +60,11 @@ public class RocketController : MonoBehaviour {
 		Debug.Log ("MoveRight");
 	}
 
+	public void Restart()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
 	private void GameOver()
 	{
 		mRigidBody.simulated = false;
@@ -86,5 +93,9 @@ public class RocketController : MonoBehaviour {
 
 			sprite.enabled = false;
 		}
+
+		yield return delay;
+
+		gameOverCanvas.enabled = true;
 	}
 }
