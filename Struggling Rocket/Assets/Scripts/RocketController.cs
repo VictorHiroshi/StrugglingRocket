@@ -7,6 +7,7 @@ public class RocketController : MonoBehaviour {
 	public float forwardSpeed = 1f;
 	public float rotationSpeed = 30f;
 	public Sprite[] explodingSprites;
+	public ParticleSystem particles;
 
 	[HideInInspector]public bool canBeMoved;
 
@@ -60,7 +61,10 @@ public class RocketController : MonoBehaviour {
 	private void GameOver()
 	{
 		mRigidBody.simulated = false;
+
 		StartCoroutine (Explode ());
+
+		particles.Stop ();
 
 		SpawnPlanets.GameOver ();
 	}
