@@ -7,6 +7,7 @@ public class MovingEvents : MonoBehaviour {
 
 	public static UnityEvent moveLeft;
 	public static UnityEvent moveRight;
+	public static UnityEvent stopMoving;
 
 	void Awake()
 	{
@@ -18,6 +19,11 @@ public class MovingEvents : MonoBehaviour {
 		if(moveRight == null)
 		{
 			moveRight = new UnityEvent ();
+		}
+
+		if(stopMoving == null)
+		{
+			stopMoving = new UnityEvent ();
 		}
 	}
 
@@ -36,6 +42,14 @@ public class MovingEvents : MonoBehaviour {
 			{
 				moveRight.Invoke ();
 			}
+		}
+	}
+
+	public static void StopMoving()
+	{
+		if(stopMoving != null)
+		{
+			stopMoving.Invoke ();
 		}
 	}
 }

@@ -18,6 +18,7 @@ public class ButtonClickEvent : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
+		MovingEvents.StopMoving ();
 		StopCoroutine (mCoroutine);
 	}
 

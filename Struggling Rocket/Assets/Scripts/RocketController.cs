@@ -10,9 +10,18 @@ public class RocketController : MonoBehaviour {
 	public Sprite[] explodingSprites;
 	public ParticleSystem particles;
 	public Canvas gameOverCanvas;
+	public float maxFuelCapacity = 100f;
+
+	[Space]
+
+	public GameObject leftJet;
+	public GameObject rightJet;
 
 	[HideInInspector]public bool canBeMoved;
 
+	private IEnumerator alignRotationCoroutine;
+	private float rotation;
+	private float fuel;
 	private Rigidbody2D mRigidBody;
 	private Vector2 speed;
 
@@ -23,18 +32,25 @@ public class RocketController : MonoBehaviour {
 		speed = new Vector2 (0f, forwardSpeed);
 
 		gameOverCanvas.enabled = false;
+
+		fuel = maxFuelCapacity;
+
+		leftJet.SetActive (false);
+		rightJet.SetActive (false);
+
+		rotation = 0f;
+		alignRotationCoroutine = RealignSpaceship ();
 	}
 
 	void Start()
 	{
 		MovingEvents.moveLeft.AddListener (MoveLeft);
 		MovingEvents.moveRight.AddListener (MoveRight);
+		MovingEvents.stopMoving.AddListener (StopMoving);
 	}
 
 	void Update()
 	{
-		mRigidBody.MoveRotation (-1f * rotationSpeed * Input.GetAxis ("Horizontal"));
-
 		mRigidBody.AddForce (transform.up * forwardSpeed);
 	}
 
@@ -50,14 +66,42 @@ public class RocketController : MonoBehaviour {
 	{
 		// TODO: Correctly move the player to the left.
 
-		Debug.Log ("MoveLeft");
+		if(rotation<1f)
+		{
+			rotation += 0.1f;
+		}
+
+		StopCoroutine (alignRotationCoroutine);
+
+		rightJet.SetActive (true);
+
+		mRigidBody.MoveRotation (rotationSpeed * rotation);
 	}
 
 	public void MoveRight()
 	{
 		// TODO: Correctly move the player to the left.
 
-		Debug.Log ("MoveRight");
+		if(rotation>-1f)
+		{
+			rotation -= 0.1f;
+		}
+
+		StopCoroutine (alignRotationCoroutine);
+
+		leftJet.SetActive (true);
+
+		mRigidBody.MoveRotation (rotationSpeed * rotation);
+	}
+
+	public void StopMoving()
+	{
+
+		StopCoroutine (alignRotationCoroutine);
+		StartCoroutine (alignRotationCoroutine);
+
+		leftJet.SetActive (false);
+		rightJet.SetActive (false);
 	}
 
 	public void Restart()
@@ -97,5 +141,17 @@ public class RocketController : MonoBehaviour {
 		yield return delay;
 
 		gameOverCanvas.enabled = true;
+	}
+
+	private IEnumerator RealignSpaceship()
+	{
+		while(rotation != 0)
+		{
+			rotation = Mathf.SmoothStep (rotation, 0f, 0.2f);
+
+			mRigidBody.MoveRotation (rotationSpeed * rotation);
+
+			yield return null;
+		}
 	}
 }
