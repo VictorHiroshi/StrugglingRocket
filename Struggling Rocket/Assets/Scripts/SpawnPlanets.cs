@@ -36,7 +36,6 @@ public class SpawnPlanets : MonoBehaviour {
 	public static void GameOver()
 	{
 		gameOver = true;
-		Debug.Log ("Stop Spawning Planets");
 	}
 
 	private IEnumerator Spawn(int numPlanets)
@@ -71,6 +70,7 @@ public class SpawnPlanets : MonoBehaviour {
 		}
 
 		SpawnWaveSize++;
+
 		Attractor.IncreaseAttractionSpeed (extraPlanetForcePerWave);
 
 		yield return waveDelay;

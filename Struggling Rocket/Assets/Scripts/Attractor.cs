@@ -26,4 +26,9 @@ public class Attractor : MonoBehaviour {
 	{
 		globalSpeedValue += extraSpeed;
 	}
+
+	public static void ResetAtrractionSpeed()
+	{
+		globalSpeedValue = 4f;
+	}
 }

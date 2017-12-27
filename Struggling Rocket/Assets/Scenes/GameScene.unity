@@ -3987,7 +3987,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 562966923}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d64ca81d4410d9843bd8a7672a07dcb9, type: 3}
@@ -7937,8 +7937,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.25}
-  m_AnchoredPosition: {x: -4, y: 40}
-  m_SizeDelta: {x: -744, y: -110}
+  m_AnchoredPosition: {x: -4, y: 30}
+  m_SizeDelta: {x: -744, y: -100}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1349834849
 MonoBehaviour:
@@ -8002,7 +8002,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300224, guid: ffbc385f68c00884096550195d2076cf, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -11524,8 +11524,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.25}
-  m_AnchoredPosition: {x: 4, y: 40}
-  m_SizeDelta: {x: -744, y: -110}
+  m_AnchoredPosition: {x: 4, y: 30}
+  m_SizeDelta: {x: -744, y: -100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1817031417
 MonoBehaviour:
@@ -11589,7 +11589,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300256, guid: ffbc385f68c00884096550195d2076cf, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -15117,7 +15117,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.14489618, g: 0.20292674, b: 0.29411763, a: 0}
+  m_BackGroundColor: {r: 0.1254902, g: 0.09411765, b: 0.19607843, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

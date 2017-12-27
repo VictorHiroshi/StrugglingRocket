@@ -106,6 +106,8 @@ public class RocketController : MonoBehaviour {
 
 	public void Restart()
 	{
+		Attractor.ResetAtrractionSpeed ();
+		
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
