@@ -11,6 +11,10 @@ public class RocketController : MonoBehaviour {
 	public ParticleSystem particles;
 	public Canvas gameOverCanvas;
 	public float maxFuelCapacity = 100f;
+	[Space]
+
+	public AudioSource audioSource;
+	public AudioClip[] explosionsSounds;
 
 	[Space]
 
@@ -126,6 +130,9 @@ public class RocketController : MonoBehaviour {
 	{
 		SpriteRenderer sprite = GetComponent <SpriteRenderer> ();
 		WaitForSeconds delay = new WaitForSeconds (0.2f);
+
+		audioSource.clip = explosionsSounds [Random.Range (0, explosionsSounds.Length)];
+		audioSource.Play ();
 
 		if(sprite != null)
 		{
