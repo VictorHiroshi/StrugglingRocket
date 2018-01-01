@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 562966930}
   - component: {fileID: 562966931}
   - component: {fileID: 562966932}
+  - component: {fileID: 562966933}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -503,7 +504,7 @@ MonoBehaviour:
     type: 2}
   extraPlanetForcePerWave: 0.15
   spawnRangeXAxis: 10
-  spawnDistanceFromCamera: 15
+  spawnDistanceFromCamera: 17
   delayBetweenPlanetSpawning: 1
   delayBetwennSpawningWaves: 5
   SpawnWaveSize: 10
@@ -613,6 +614,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &562966933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 562966923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb3179e809d77b469ed035be8ca378a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 9b1f203a3e45c524c95e1467061684be, type: 2}
+  volumeOn: -10
+  volumeOff: -80
 --- !u!1 &696374792
 GameObject:
   m_ObjectHideFlags: 0

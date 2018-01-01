@@ -25,19 +25,14 @@ public class RocketController : MonoBehaviour {
 
 	private IEnumerator alignRotationCoroutine;
 	private float rotation;
-	private float fuel;
 	private Rigidbody2D mRigidBody;
-	private Vector2 speed;
+
 
 	void Awake()
 	{
 		mRigidBody = GetComponent <Rigidbody2D> ();
 
-		speed = new Vector2 (0f, forwardSpeed);
-
 		gameOverCanvas.enabled = false;
-
-		fuel = maxFuelCapacity;
 
 		leftJet.SetActive (false);
 		rightJet.SetActive (false);
@@ -68,7 +63,6 @@ public class RocketController : MonoBehaviour {
 
 	public void MoveLeft()
 	{
-		// TODO: Correctly move the player to the left.
 
 		if(rotation<1f)
 		{
@@ -84,7 +78,6 @@ public class RocketController : MonoBehaviour {
 
 	public void MoveRight()
 	{
-		// TODO: Correctly move the player to the left.
 
 		if(rotation>-1f)
 		{
@@ -124,6 +117,9 @@ public class RocketController : MonoBehaviour {
 		particles.Stop ();
 
 		SpawnPlanets.GameOver ();
+
+		MovingEvents.moveLeft.RemoveListener (MoveLeft);
+		MovingEvents.moveRight.RemoveListener (MoveRight);
 	}
 
 	private IEnumerator Explode()
