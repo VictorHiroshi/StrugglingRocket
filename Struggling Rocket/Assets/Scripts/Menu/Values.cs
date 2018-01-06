@@ -25,8 +25,6 @@ public class Values : MonoBehaviour {
 			PlayerPrefs.SetInt ("soundOn", 1);
 		}
 
-		LoadRanking ();
-
 	}
 
 	void Start()

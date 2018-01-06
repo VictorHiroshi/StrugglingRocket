@@ -162,10 +162,11 @@ AudioSource:
   m_GameObject: {fileID: 46072835}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243770609335412664, guid: 9b1f203a3e45c524c95e1467061684be,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: d64ca81d4410d9843bd8a7672a07dcb9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -809,7 +810,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1636411771
+  randomSeed: 1392813918
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4402,7 +4403,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1407942002}
-        m_MethodName: Play
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4455,7 +4456,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1407941997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657467078c50bf546a94f88d7ea5c4f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 82bae6a29582ac644b4234228dd858ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameSceneName: GameScene
@@ -4559,6 +4560,7 @@ GameObject:
   - component: {fileID: 1973465784}
   - component: {fileID: 1973465783}
   - component: {fileID: 1973465782}
+  - component: {fileID: 1973465785}
   m_Layer: 5
   m_Name: RankingButton
   m_TagString: Untagged
@@ -4624,7 +4626,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1973465783}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1973465785}
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1973465783
@@ -4660,3 +4673,15 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1973465780}
+--- !u!114 &1973465785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1973465780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82bae6a29582ac644b4234228dd858ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSceneName: Ranking
