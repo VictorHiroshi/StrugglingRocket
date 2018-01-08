@@ -9,14 +9,20 @@ public class SoundButtonText : MonoBehaviour {
 	public string soundOnText;
 	public string soundOffText;
 
-	public void Awake()
+	public void Start()
 	{
-		Values.UpdatedValues.AddListener (UpdateButtonText);
+		GameController.UpdatedValues.AddListener (UpdateButtonText);
+		UpdateButtonText ();
+	}
+
+	public void Click()
+	{
+		GameController.instance.ChangeSoundStatus ();
 	}
 
 	public void UpdateButtonText()
 	{
-		if(Values.soundOn)
+		if(GameController.soundOn)
 		{
 			buttonText.text = soundOnText;
 		}
