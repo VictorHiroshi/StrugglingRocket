@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RocketController : MonoBehaviour {
 
@@ -9,7 +8,6 @@ public class RocketController : MonoBehaviour {
 	public float rotationSpeed = 30f;
 	public Sprite[] explodingSprites;
 	public ParticleSystem particles;
-	public Canvas gameOverCanvas;
 	public float maxFuelCapacity = 100f;
 	[Space]
 
@@ -22,6 +20,7 @@ public class RocketController : MonoBehaviour {
 	public GameObject rightJet;
 
 	[HideInInspector]public bool canBeMoved;
+	[HideInInspector]public float distance;
 
 	private IEnumerator alignRotationCoroutine;
 	private float rotation;
@@ -31,8 +30,6 @@ public class RocketController : MonoBehaviour {
 	void Awake()
 	{
 		mRigidBody = GetComponent <Rigidbody2D> ();
-
-		gameOverCanvas.enabled = false;
 
 		leftJet.SetActive (false);
 		rightJet.SetActive (false);
@@ -46,6 +43,7 @@ public class RocketController : MonoBehaviour {
 		MovingEvents.moveLeft.AddListener (MoveLeft);
 		MovingEvents.moveRight.AddListener (MoveRight);
 		MovingEvents.stopMoving.AddListener (StopMoving);
+		distance = 0f;
 	}
 
 	void Update()
@@ -53,11 +51,17 @@ public class RocketController : MonoBehaviour {
 		mRigidBody.AddForce (transform.up * forwardSpeed);
 	}
 
+	void LateUpdate ()
+	{
+		if (transform.position.y > distance)
+			distance = transform.position.y;
+	}
+
 	void OnCollisionEnter2D (Collision2D col)
 	{
 		if(col.gameObject.tag == "Planet")
 		{
-			GameOver ();
+			RunGameOver ();
 		}
 	}
 
@@ -101,22 +105,13 @@ public class RocketController : MonoBehaviour {
 		rightJet.SetActive (false);
 	}
 
-	public void Restart()
-	{
-		Attractor.ResetAtrractionSpeed ();
-		
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-	}
-
-	private void GameOver()
+	private void RunGameOver()
 	{
 		mRigidBody.simulated = false;
 
 		StartCoroutine (Explode ());
 
 		particles.Stop ();
-
-		SpawnPlanets.GameOver ();
 
 		MovingEvents.moveLeft.RemoveListener (MoveLeft);
 		MovingEvents.moveRight.RemoveListener (MoveRight);
@@ -145,7 +140,7 @@ public class RocketController : MonoBehaviour {
 
 		yield return delay;
 
-		gameOverCanvas.enabled = true;
+		GameOver.instance.RunGameOver (distance);
 	}
 
 	private IEnumerator RealignSpaceship()

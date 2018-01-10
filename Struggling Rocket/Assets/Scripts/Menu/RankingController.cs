@@ -7,7 +7,7 @@ public class RankingController : MonoBehaviour {
 
 	public Transform rankingCanvas;
 	public GameObject rankedUserPrefab;
-	public int maxInstances = 8;
+	public int maxInstances = 10;
 
 	void Start () 
 	{

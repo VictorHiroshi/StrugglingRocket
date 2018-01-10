@@ -4815,6 +4815,7 @@ MonoBehaviour:
   rankingCanvas: {fileID: 1378774340}
   rankedUserPrefab: {fileID: 1721567993274842, guid: 7939c3e827adf2f409dd77e803102e48,
     type: 2}
+  maxInstances: 10
 --- !u!1 &2125917707
 GameObject:
   m_ObjectHideFlags: 0

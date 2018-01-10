@@ -55,54 +55,58 @@ public class GameController : MonoBehaviour {
 	public void LoadRanking()
 	{
 		// TODO: Load Ranking from file or create new empty file.
-		UserData temporaryUser;
-
-		for(int i = 0; i<15; i++)
-		{
-			temporaryUser = new UserData ();
-			temporaryUser.nickName = "monkey" + i + "@";
-			temporaryUser.distanceTraveled = Random.Range (10f, 2000f);
-
-			AddRankedUser (temporaryUser);
-		}
-
-		temporaryUser = new UserData ();
-		temporaryUser.nickName = "Karin";
-		temporaryUser.distanceTraveled = 2000f;
-		AddRankedUser (temporaryUser);
 
 	}
 
 	public void AddRankedUser(UserData user)
 	{
-		bool changedList = false;
+		int index;
+
+		if(CheckIfTop (user, out index))
+		{
+			localRanking.Insert (index, user);
+
+			while(localRanking.Count>maxInstancesInRanking)
+			{
+				localRanking.RemoveAt (localRanking.Count - 1);
+			}
+
+			UpdateRankingFile ();
+		}
+	}
+
+	public void AddRankedUser(UserData user, int index)
+	{
+		localRanking.Insert (index, user);
+
+		while(localRanking.Count>maxInstancesInRanking)
+		{
+			localRanking.RemoveAt (localRanking.Count - 1);
+		}
+
+		UpdateRankingFile ();
+	}
+
+	public bool CheckIfTop(UserData user, out int index)
+	{
+		index = 0;
 
 		for(int i = 0; i<localRanking.Count; i++)
 		{
 			if(user.IsGreaterThan (localRanking[i]))
 			{
-				localRanking.Insert (i, user);
-				changedList = true;
-				break;
+				index = i;
+				return true;
 			}
 		}
 
-		if(!changedList)
+		if(localRanking.Count<maxInstancesInRanking)
 		{
-			localRanking.Add (user);
+			index = localRanking.Count;
+			return true;
 		}
 
-		if(localRanking.Count>maxInstancesInRanking)
-		{
-			localRanking.RemoveAt (localRanking.Count - 1);
-
-			if(!changedList)
-			{
-				return;
-			}
-		}
-
-		UpdateRankingFile ();
+		return false;
 	}
 
 	public void ChangeSoundStatus()

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour {
 
 	public Text scoreText;
-	public Transform player;
+	public RocketController player;
 
 	private float distance;
 
@@ -15,11 +15,8 @@ public class Score : MonoBehaviour {
 		distance = 0f;
 	}
 
-	void LateUpdate()
+	void Update()
 	{
-		if (player.position.y > distance)
-			distance = player.position.y;
-
-		scoreText.text = "Distance: " + distance.ToString ("F2");
+		scoreText.text = "Distance: " + player.distance.ToString ("F2");
 	}
 }
