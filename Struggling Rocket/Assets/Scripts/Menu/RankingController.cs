@@ -9,9 +9,12 @@ public class RankingController : MonoBehaviour {
 	public GameObject rankedUserPrefab;
 	public int maxInstances = 10;
 
+	private List<GameObject> rankObjects = new List<GameObject> ();
+
 	void Start () 
 	{
 		PopulateRanking ();
+		GameController.UpdatedValues.AddListener (UpdateRanking);
 	}
 	
 	private void PopulateRanking()
@@ -33,5 +36,17 @@ public class RankingController : MonoBehaviour {
 		GameObject rankedUserInstance = Instantiate (rankedUserPrefab, rankingCanvas);
 
 		rankedUserInstance.GetComponent <RankedUserScript>().SetValues (name, distance.ToString ("F2"));
+
+		rankObjects.Add (rankedUserInstance);
+	}
+
+	private void UpdateRanking () 
+	{
+		foreach(GameObject rankedUser in rankObjects)
+		{
+			Destroy (rankedUser);
+		}
+
+		rankObjects.Clear ();
 	}
 }

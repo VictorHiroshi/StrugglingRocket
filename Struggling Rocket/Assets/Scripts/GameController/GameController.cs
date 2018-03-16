@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Runtime.Serialization;
-/*using System.Linq;*/
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class GameController : MonoBehaviour {
 
@@ -55,7 +57,26 @@ public class GameController : MonoBehaviour {
 	public void LoadRanking()
 	{
 		// TODO: Load Ranking from file or create new empty file.
+		if (File.Exists (Application.persistentDataPath + "/ranking.dat")) {
+			BinaryFormatter bf = new BinaryFormatter ();
+			FileStream file = File.Open (Application.persistentDataPath + "/ranking.dat", FileMode.Open);
+			Debug.Log (file);
+			List<UserData> data = (List<UserData>)bf.Deserialize (file);
+			file.Close ();
 
+			localRanking = data;
+		}
+	}
+
+	public void ClearRanking() {
+		localRanking = new List<UserData> ();
+
+		File.Delete (Application.persistentDataPath + "/ranking.dat");
+
+		UpdateRankingFile ();
+
+		Debug.Log ("clear");
+		StartCoroutine (InvokeUpdatedValues ());
 	}
 
 	public void AddRankedUser(UserData user)
@@ -133,8 +154,13 @@ public class GameController : MonoBehaviour {
 
 	private void UpdateRankingFile()
 	{
-		// TODO.
-
 		Debug.Log ("Updating file!");
+
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.Create (Application.persistentDataPath + "/ranking.dat");
+
+		bf.Serialize (file, localRanking);
+
+		file.Close ();
 	}
 }
