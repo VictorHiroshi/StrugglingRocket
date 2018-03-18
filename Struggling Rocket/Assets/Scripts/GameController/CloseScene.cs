@@ -14,8 +14,14 @@ public class CloseScene : MonoBehaviour {
 
 	public void Close()
 	{
-		if (SceneManager.GetActiveScene ().buildIndex != 0)
+		if (SceneManager.GetActiveScene ().buildIndex != 0 && SceneManager.GetActiveScene ().name != "GameScene")
+		{
 			SceneManager.LoadScene (0);
+		}
+		else if (SceneManager.GetActiveScene ().name == "GameScene") 
+		{
+			PlayAd.instance.PlayAdAndLoadScene ("MainMenu");
+		}
 		else
 		{
 			Application.Quit ();

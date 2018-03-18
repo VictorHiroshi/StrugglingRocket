@@ -5,10 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneByName : MonoBehaviour {
 	public string gameSceneName;
+	public bool playAd = false;
 
 	public void Load()
 	{
-		SceneManager.LoadScene (gameSceneName);
-
+		if (playAd) {
+			PlayAd.instance.PlayAdAndLoadScene (gameSceneName);
+		}
+		else {
+			SceneManager.LoadScene (gameSceneName);
+		}
 	}
 }

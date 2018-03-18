@@ -60,7 +60,6 @@ public class GameController : MonoBehaviour {
 		if (File.Exists (Application.persistentDataPath + "/ranking.dat")) {
 			BinaryFormatter bf = new BinaryFormatter ();
 			FileStream file = File.Open (Application.persistentDataPath + "/ranking.dat", FileMode.Open);
-			Debug.Log (file);
 			List<UserData> data = (List<UserData>)bf.Deserialize (file);
 			file.Close ();
 
@@ -75,7 +74,6 @@ public class GameController : MonoBehaviour {
 
 		UpdateRankingFile ();
 
-		Debug.Log ("clear");
 		StartCoroutine (InvokeUpdatedValues ());
 	}
 
@@ -154,8 +152,6 @@ public class GameController : MonoBehaviour {
 
 	private void UpdateRankingFile()
 	{
-		Debug.Log ("Updating file!");
-
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.Create (Application.persistentDataPath + "/ranking.dat");
 

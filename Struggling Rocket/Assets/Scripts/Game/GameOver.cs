@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -35,7 +36,7 @@ public class GameOver : MonoBehaviour {
 	{
 		Attractor.ResetAtrractionSpeed ();
 
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		PlayAd.instance.PlayAdAndLoadScene ("GameScene");
 	}
 
 	public void RunGameOver(float distance)

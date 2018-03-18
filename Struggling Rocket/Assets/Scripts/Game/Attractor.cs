@@ -7,7 +7,7 @@ public class Attractor : MonoBehaviour {
 
 	private Rigidbody2D playerRB;
 	private float attractionSpeed;
-	private static float globalSpeedValue = 3.8f;
+	private static float globalSpeedValue = 4f;
 
 	void Awake () 
 	{
@@ -29,6 +29,6 @@ public class Attractor : MonoBehaviour {
 
 	public static void ResetAtrractionSpeed()
 	{
-		globalSpeedValue = 3.8f;
+		globalSpeedValue = 4f;
 	}
 }

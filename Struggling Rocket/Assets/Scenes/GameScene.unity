@@ -113,6 +113,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &68631653 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1485751352480814, guid: 22db2977c3eadbb46aeae689238f8c1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1794320423}
+--- !u!114 &68631659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 68631653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7429ac9c627a870498269a36878f8409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &103686156
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +681,7 @@ MonoBehaviour:
   - {fileID: 1031284321648120, guid: 770db8b72b846b5439f4e15329bcf913, type: 2}
   attractionParticles: {fileID: 1812701035113192, guid: f0e02bf50adf82247854f9f9fef0d1c2,
     type: 2}
-  extraPlanetForcePerWave: 0.12
+  extraPlanetForcePerWave: 0.15
   spawnRangeXAxis: 10
   spawnDistanceFromCamera: 25
   delayBetweenPlanetSpawning: 1
@@ -887,6 +903,21 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.startSize.scalar
       value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 114443133665196986, guid: 46ab8d263d2bd484b9c15fb788a540bf,
+        type: 2}
+      propertyPath: forwardSpeed
+      value: 3.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 212652122570108786, guid: 46ab8d263d2bd484b9c15fb788a540bf,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212652122570108786, guid: 46ab8d263d2bd484b9c15fb788a540bf,
+        type: 2}
+      propertyPath: m_FlipY
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 46ab8d263d2bd484b9c15fb788a540bf, type: 2}
@@ -4797,6 +4828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSceneName: Ranking
+  playAd: 1
 --- !u!4 &1253942827 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4699235699964794, guid: 46ab8d263d2bd484b9c15fb788a540bf,
@@ -5839,7 +5871,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bae6a29582ac644b4234228dd858ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: Main Menu
+  gameSceneName: MainMenu
+  playAd: 1
 --- !u!1 &2126125814
 GameObject:
   m_ObjectHideFlags: 0
